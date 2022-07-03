@@ -34,17 +34,17 @@ public class UserDaoImp implements UserDao {
     @Override
     public void save(User user){
         entityManager.persist(user);
-        entityManager.flush();
     }
 
     @Override
     public void saveAndFlush(User user) {
         entityManager.merge(user);
-        entityManager.flush();
     }
 
     @Override
     public void deleteById(Long id) {
-        entityManager.remove(findUserById(id));
+        entityManager.createQuery("delete from User where id=:id")
+                .setParameter("id", id)
+                .executeUpdate();
     }
 }

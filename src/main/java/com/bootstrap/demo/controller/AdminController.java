@@ -44,7 +44,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PostMapping("/user-update/{id}")
+    @PutMapping("/user-update/{id}")
     public String updateUser(@ModelAttribute(value = "user") User user,
                              @RequestParam(value = "editRoles") String[] roles) {
 
